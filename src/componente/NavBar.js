@@ -1,11 +1,12 @@
 import imagen from '../img/Group 5.png';
 import CartWidget from './CartWidget.js';
+import {Link } from 'react-router-dom'
 
 const NavBar = () => {
   return (
     <div className="navbar bg-base-100;">
   <div className="flex-1">
-    <a className="btn btn-ghost normal-case text-xl">Teje con Amor</a>
+   <Link to= '/'> <a className="btn btn-ghost normal-case text-xl">Teje con Amor</a></Link>
   </div>
   <div className="flex-none">
     <div >
@@ -18,13 +19,9 @@ const NavBar = () => {
         </div>
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        <li>
-          <a>
-            Quienes Somos
-          </a>
-        </li>
-        <li><a>Producto</a></li>
-        <li><a>Contacto</a></li>
+        <li> Catalogo </li>
+        <li> Agujas e Implementos </li>
+        <li> Hilos </li>
       </ul>
     </div>
   </div>

@@ -1,13 +1,21 @@
+import Reacts from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import ItemListContainer from './componente/ItemListContainer';
 import NavBar from './componente/NavBar.js';
+import ItemListContainer from './componente/ItemListContainer';
+import ItemDetail from './componente/ItemDetail';
 
 function App() {
 return (
   <>
-  <NavBar/>
-  <ItemListContainer greeting='Nosotros queremos, lograr que las personas puede entender que cualquier género pueden
-            tejer y no solo es para nuestras abuelas.'/>
+  <BrowserRouter>
+    <NavBar/>
+    <Routes>
+        <Route path={'/'} element ={<ItemListContainer/>}/>
+        <Route path={'/category/:id'} element ={<ItemListContainer/>}/>
+        <Route path={'/item/id'} element ={<ItemDetail/>}/>
+    </Routes>
+    </BrowserRouter>
   </>
 );
 }
