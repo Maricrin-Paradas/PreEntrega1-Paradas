@@ -1,4 +1,3 @@
-import Reacts from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import NavBar from './componente/NavBar.js';
@@ -12,7 +11,7 @@ return (
     <NavBar/>
     <Routes>
         <Route path={'/'} element ={<ItemListContainer/>}/>
-        <Route path={'/category/:id'} element ={<ItemListContainer/>}/>
+        <Route path={'/category/item:id'} element ={<ItemListContainer/>}/>
         <Route path={'/item/:id'} element ={<ItemDetail/>}/>
     </Routes>
     </BrowserRouter>

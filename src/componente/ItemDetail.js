@@ -14,7 +14,7 @@ const ItemDetail = () => {
     }, [])
 
     const getItemDetil = () => {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
                 resolve( lista.find ( l => l.id == itemId ) )
       })
     }
