@@ -19,8 +19,8 @@ const NavBar = () => {
         </div>
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        <li> <Link to= 'category/:id'> Agujas e Implementos  </Link></li>
-        <li> <Link to= 'category/:id'> Hilos  </Link></li>
+        <li> <Link to= 'category/aguja'> Agujas e Implementos  </Link></li>
+        <li> <Link to= 'category/hilo'> Hilos  </Link></li>
       </ul>
     </div>
   </div>

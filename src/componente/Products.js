@@ -14,6 +14,7 @@ const lista = [
     price: "$26.417",
     stock: 20,
     img: img1,
+    tipo: "aguja",
   },
   {
     id: 2,
@@ -21,18 +22,22 @@ const lista = [
     price: "$8.990",
     stock: 20,
     img: img2,
+    tipo: "aguja",
   },
   { id: 3,
     name: "Kit Marcadores",
     price: "$3.990",
     stock: 20,
-    img: img3 },
+    img: img3,
+    tipo: "aguja",
+  },
   {
     id: 4,
     name: "Kit Agujas de Palillo",
     price: "$9.000",
     stock: 20,
     img: img4,
+    tipo: "aguja",
   },
   {
     id: 5,
@@ -40,6 +45,7 @@ const lista = [
     price: "$2.990",
     stock: 20,
     img: img5,
+    tipo: "hilo",
   },
   {
     id: 6,
@@ -47,6 +53,7 @@ const lista = [
     price: "$2.990",
     stock: 20,
     img: img6,
+    tipo: "hilo",
   },
   {
     id: 7,
@@ -54,6 +61,7 @@ const lista = [
     price: "$2.990",
     stock: 20,
     img: img7,
+    tipo: "hilo",
   },
   {
     id: 8,
@@ -61,6 +69,7 @@ const lista = [
     price: "$2.990",
     stock: 20,
     img: img8,
+    tipo: "hilo",
   },
 ];
 

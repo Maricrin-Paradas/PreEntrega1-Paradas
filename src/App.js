@@ -3,6 +3,7 @@ import './App.css';
 import NavBar from './componente/NavBar.js';
 import ItemListContainer from './componente/ItemListContainer';
 import ItemDetail from './componente/ItemDetail';
+import ItemAI from './componente/ItemAI';
 
 function App() {
 return (
@@ -11,7 +12,7 @@ return (
     <NavBar/>
     <Routes>
         <Route path={'/'} element ={<ItemListContainer/>}/>
-        <Route path={'/category/item:id'} element ={<ItemListContainer/>}/>
+        <Route path={'/category/:tipo'} element ={<ItemAI/>}/>
         <Route path={'/item/:id'} element ={<ItemDetail/>}/>
     </Routes>
     </BrowserRouter>
