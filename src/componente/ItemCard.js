@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const ItemCard= ({id, name, price, stock, img}) => {
   return (
-    <div className=" inline-block ">
     <Link to={`/item/${id}`}>
-      <div className="card w-80 bg-base-190 shadow-xl m-5 ">
-        <figure> <img src={img} alt="Shoes" /></figure>
+    <div className="inline-block m-5">
+      <div className="card h-80 w-80 bg-base-190 shadow-xl m-5 ">
+        <figure> <img className="bject-contain h-48 w-96" src={img} alt="Shoes" /></figure>
         <div className="card-body">
           <h2 className="card-title"> {name}</h2>
           <div className="card-actions justify-end">
@@ -15,8 +15,8 @@ const ItemCard= ({id, name, price, stock, img}) => {
           </div>
         </div>
       </div>
-    </Link>
     </div>
+    </Link>
   )
 }
 

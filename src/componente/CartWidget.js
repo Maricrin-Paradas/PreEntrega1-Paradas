@@ -1,7 +1,13 @@
 import React from 'react'
+import { useCart } from './ContexCar'
 
 const CartWidget = () => {
+
+  const {products, clearCart} = useCart()
+
   return (
+    <>
+       <div> {products.map( (p,i) => <li key={i}> {p.name} </li>)} </div>
     <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle">
         <div className="indicator">
@@ -19,7 +25,7 @@ const CartWidget = () => {
         </div>
       </div>
     </div>
-  )
+    </>)
 }
 
 export default CartWidget

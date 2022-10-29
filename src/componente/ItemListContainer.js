@@ -1,30 +1,33 @@
 import React, {useEffect, useState} from "react";
+import { collection,  getDocs, getFirestore } from "firebase/firestore";
 import ItemCard from "./ItemCard";
-import lista from "./Products";
+import img from "../img/cargando.gif"
 
 const ItemListContainer = () => {
 
 const [items, setItems] = useState([])
+const [loading, setLoading] = useState([true])
 
 useEffect(() => {
-  getProducts().then (response => {
-    console.log(response);
-    setItems( response)
-  })
+  getItems ()
 }, [])
 
-const getProducts = () => {
-  return new Promise ( resolve => {
-    setTimeout (() => {
-      resolve ( lista ) 
-    }, 1000);
+const getItems = () => {
+  const db = getFirestore ()
+  const collectionRef = collection( db, "Products ")
+  getDocs(collectionRef).then (snapshot => {
+    const data = snapshot.docs.map( e=> ({id: e.id, ...e.data()}) )
+    setItems(data);
+    setLoading(false)
   })
 }
 
   return (
     <>
-      <div className="card-title m-5 " >Catalogo</div>
-      {items.map ( i => <ItemCard key={i.id} {...i}/> ) }
+      { loading ?<figure> <img className="object-contain h-48 w-96"  src= {img} /> </figure>
+      :
+      items.map( i => <ItemCard key={i.id} {...i}/> )
+      }
     </>
   );
 };

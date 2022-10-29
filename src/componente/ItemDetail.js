@@ -1,40 +1,48 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import lista from './Products'
+import { collection, doc, getDoc, getFirestore } from "firebase/firestore";
+import img from "../img/cargando.gif"
 
 const ItemDetail = () => {
 
-    const {id:itemId } = useParams()
-    const [item, setItems] = useState ({})
+    const { id } = useParams()
+    const [items, setItems] = useState({})
+    const [loading, setLoading] = useState([true])
 
     useEffect(() => {
-        getItemDetil().then (response =>{
-            setItems (response)
-        })
+      getItemsDetail()
     }, [])
 
-    const getItemDetil = () => {
-        return new Promise((resolve) => {
-                resolve( lista.find ( l => l.id == itemId ) )
+   const getItemsDetail = () => {
+      const db = getFirestore()
+      const collectionRef = collection( db, "Products ")
+      const docRef = doc( collectionRef, id)
+      getDoc(docRef).then(res  => {
+        console.log('res.data()', res.data())
+      setItems(res.data());
+      setLoading(false)
       })
     }
 
   return (
-    <>
-      <div className="flex justify-center">
-      <div className="card w-96 bg-base-190 shadow-xl m-5 ">
-        <figure> <img src={item.img} alt="Shoes" /></figure>
+          <>{ loading ?<figure> <img className="object-contain h-48 w-96"  src= {img} /> </figure>
+          :
+           <div ClassName="flex justify-center "> 
+    <div className=" card w-100 bg-base-100 shadow-xl">
+        <figure><img className="h-55 w-96" src={items.img}/></figure>
         <div className="card-body">
-          <h2 className="card-title"> {item.name}</h2>
-          <div className="card-actions justify-end">
-            <div className="badge badge-outline">Precio {item.price}</div>
-            <div className="badge badge-outline">Stock {item.stock}</div>
-          </div>
+            <h2 className="card-title">{items.name}</h2>
+            <p>{items.description}</p>
+            <div className="card-actions justify-end">
+              <div className="badge badge-outline">Precio {items.price}</div>
+              <div className="badge badge-outline">Stock {items.stock}</div>
+              <button className="btn btn-primary">Agregar a Carrito</button>
+            </div>
         </div>
-      </div>
     </div>
-    </>
-
+    </div>
+}
+  </>
   )
 }
 
