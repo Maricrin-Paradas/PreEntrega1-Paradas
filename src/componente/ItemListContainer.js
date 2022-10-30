@@ -4,7 +4,6 @@ import ItemCard from "./ItemCard";
 import img from "../img/cargando.gif"
 
 const ItemListContainer = () => {
-
 const [items, setItems] = useState([])
 const [loading, setLoading] = useState([true])
 

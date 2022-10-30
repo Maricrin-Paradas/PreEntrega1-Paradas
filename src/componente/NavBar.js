@@ -1,5 +1,5 @@
 import imagen from '../img/Group 5.png';
-import CartWidget from './CartWidget.js';
+import CartWidget from './Cart/CartWidget.js';
 import {Link } from 'react-router-dom'
 
 const NavBar = () => {
@@ -10,7 +10,7 @@ const NavBar = () => {
   </div>
   <div className="flex-none">
     <div >
-      <CartWidget/>
+     <Link to='./Cart/internal' > <CartWidget/></Link> 
     </div>
     <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">

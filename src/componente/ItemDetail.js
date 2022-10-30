@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { collection, doc, getDoc, getFirestore } from "firebase/firestore";
 import img from "../img/cargando.gif"
+import { useCart } from './contex/ContexCar';
 
 const ItemDetail = () => {
 
     const { id } = useParams()
     const [items, setItems] = useState({})
     const [loading, setLoading] = useState([true])
+    const { addToCart } = useCart()
 
     useEffect(() => {
       getItemsDetail()
@@ -18,10 +20,13 @@ const ItemDetail = () => {
       const collectionRef = collection( db, "Products ")
       const docRef = doc( collectionRef, id)
       getDoc(docRef).then(res  => {
-        console.log('res.data()', res.data())
       setItems(res.data());
       setLoading(false)
       })
+    }
+
+    const addHandler = () => { 
+      addToCart(items)
     }
 
   return (
@@ -36,7 +41,7 @@ const ItemDetail = () => {
             <div className="card-actions justify-end">
               <div className="badge badge-outline">Precio {items.price}</div>
               <div className="badge badge-outline">Stock {items.stock}</div>
-              <button className="btn btn-primary">Agregar a Carrito</button>
+              <button onClick={addHandler} className="btn btn-primary">Agregar a Carrito</button>
             </div>
         </div>
     </div>
