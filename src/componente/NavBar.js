@@ -4,7 +4,7 @@ import {Link } from 'react-router-dom'
 
 const NavBar = () => {
   return (
-    <div className="navbar bg-violet-200">
+    <div className="navbar text-primary-content bg-violet-400">
   <div className="flex-1">
    <Link to= '/'> <a className="btn btn-ghost normal-case text-xl">Teje con Amor</a> </Link>
   </div>
@@ -18,9 +18,9 @@ const NavBar = () => {
         <img src= {imagen} /> 
         </div>
       </label>
-      <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        <li> <Link to= 'category/aguja'> Agujas e Implementos  </Link></li>
-        <li> <Link to= 'category/hilo'> Hilos  </Link></li>
+      <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52">
+        <li className=' bg-violet-400 '> <Link to= 'category/aguja'> Agujas e Implementos  </Link></li>
+        <li className=' bg-violet-400 '> <Link to= 'category/hilo'> Hilos  </Link></li>
       </ul>
     </div>
   </div>

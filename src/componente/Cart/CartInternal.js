@@ -10,24 +10,27 @@ const CartInternal = () => {
         products.length !== 0 ?
         products.map( (data) => {
             return (
-          <div className="card card-side bg-base-100 shadow-xl">
+          <div className="card lg:card-side bg-base-200 shadow-xl m-20">
             <figure>
-              <img src={data.img} alt="Movie" />
+              <img className="h-55 w-96" src={data.img} alt="Movie" />
             </figure>
             <div className="card-body">
               <h2 className="card-title"> {data.name} </h2>
               <p>{data.price}</p>
               <div className="card-actions justify-end">
             <Link to='/cart/page'>   <button className="btn btn-secondary">Pagar</button> </Link>
-                <button onClick={clearCart} className="btn btn-secondary">Limpiar Carrito</button>
               </div>
             </div>
           </div>
             )
-        } )
-        :
-        <p> No hay producto</p>
-    }
+          } )
+          :
+          <p> No hay producto</p>
+        }
+        <div className="flex justify-end"> 
+        <button onClick={clearCart} className="btn btn-secondary m-5">Limpiar Carrito</button>
+        </div>
+
     </>
   );
 };
