@@ -10,8 +10,7 @@ const ItemCard= ({id, name, price, stock, img}) => {
         <div className="card-body">
           <h2 className="card-title"> {name}</h2>
           <div className="card-actions justify-end">
-            <div className="badge badge-outline">Precio {price}</div>
-            <div className="badge badge-outline">Stock {stock}</div>
+            <div className="badge badge-outline">Precio ${price}</div>
           </div>
         </div>
       </div>

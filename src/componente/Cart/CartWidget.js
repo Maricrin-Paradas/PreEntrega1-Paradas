@@ -33,7 +33,7 @@ const CartWidget = () => {
               <div tabIndex={0} className="mt-3 card card-compact  w-50 bg-base-100 shadow">
                 <div className="card-body">
                   <div className="card-actions">
-                    <button className="btn btn-primary btn-block"> 
+                    <button className="btn btn-secondary btn-block"> 
                     Finalizar compra</button>
                   </div>
                 </div>

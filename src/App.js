@@ -7,6 +7,8 @@ import ItemDetail from './componente/ItemDetail';
 import ItemAI from './componente/ItemAI';
 import CartWidget from './componente/Cart/CartWidget';
 import CartInternal from './componente/Cart/CartInternal';
+import Footer from './componente/Footer';
+import PagePayment from './componente/Cart/PagePayment';
 
 function App() {
 
@@ -20,7 +22,9 @@ return (
             <Route path={'/cart/internal'} element ={<CartInternal/>}/>
             <Route path={'/category/:tipo'} element ={<ItemAI/>}/>
             <Route path={'/item/:id'} element ={<ItemDetail/>}/>
+            <Route path={'/cart/page'} element ={<PagePayment/>}/>
         </Routes>
+        <Footer/>
   </BrowserRouter>
 </CartCreateContextProvider>
 

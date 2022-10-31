@@ -9,6 +9,7 @@ const ItemDetail = () => {
     const { id } = useParams()
     const [items, setItems] = useState({})
     const [loading, setLoading] = useState([true])
+    const [conunt, setConunt] = useState(1)
     const { addToCart } = useCart()
 
     useEffect(() => {
@@ -29,6 +30,15 @@ const ItemDetail = () => {
       addToCart(items)
     }
 
+    const decrease = () => {
+      setConunt(conunt - 1)
+    }
+
+    const increase = () => {
+      setConunt(conunt + 1)
+    }
+
+
   return (
           <>{ loading ?<figure> <img className="object-contain h-48 w-96"  src= {img} /> </figure>
           :
@@ -39,9 +49,14 @@ const ItemDetail = () => {
             <h2 className="card-title">{items.name}</h2>
             <p>{items.description}</p>
             <div className="card-actions justify-end">
-              <div className="badge badge-outline">Precio {items.price}</div>
-              <div className="badge badge-outline">Stock {items.stock}</div>
-              <button onClick={addHandler} className="btn btn-primary">Agregar a Carrito</button>
+              <div className="  p-3 s ">Precio ${items.price}</div>
+
+              <div className="btn-group"> 
+              <button disabled={ conunt <= 1 } onClick={decrease} className="btn btn-secondary">-</button>
+              <span className= "p-3 " >{conunt}</span>
+              <button className=" w-5 btn btn-secondary" disabled={ conunt >= items.stock}  onClick={increase} >+</button>
+              </div>
+               <button onClick={addHandler} className="btn btn-secondary">Agregar a Carrito</button>
             </div>
         </div>
     </div>

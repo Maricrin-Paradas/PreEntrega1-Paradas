@@ -1,12 +1,8 @@
-import React, { useState } from "react";
 import { useCart } from "../contex/ContexCar";
+import { Link } from 'react-router-dom';
 
 const CartInternal = () => {
   const { products, clearCart } = useCart();
-  //const [data, setData] = useState([])
-
-  //const datos = products.map( e=> ({id: e.id, ...e.data()}) )
- // setData(datos)
 
   return (
     <>
@@ -22,8 +18,8 @@ const CartInternal = () => {
               <h2 className="card-title"> {data.name} </h2>
               <p>{data.price}</p>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary">Pagar</button>
-                <button onClick={clearCart} className="btn btn-primary">Limpiar Carrito</button>
+            <Link to='/cart/page'>   <button className="btn btn-secondary">Pagar</button> </Link>
+                <button onClick={clearCart} className="btn btn-secondary">Limpiar Carrito</button>
               </div>
             </div>
           </div>
