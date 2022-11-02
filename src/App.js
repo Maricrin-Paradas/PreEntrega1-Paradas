@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import {CartCreateContextProvider} from "./componente/contex/ContexCar";
+import {CartCreateContextProvider} from "./componente/Contex/ContexCar";
 import NavBar from './componente/NavBar.js';
 import ItemListContainer from './componente/ItemListContainer';
 import ItemDetail from './componente/ItemDetail';

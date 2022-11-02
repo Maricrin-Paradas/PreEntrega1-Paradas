@@ -27,9 +27,10 @@ const ItemAI = () => {
         if (snapshot.size === 0) {
           console.log("No resultado");
         }
-        setItems(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+        setItems(snapshot.docs.map((doc) => ({p:{ id: doc.id, ...doc.data(), quantity:0 }})));
       });
     }
+
 
     const getAguja = () => {
       const db = getFirestore()
@@ -42,13 +43,13 @@ const ItemAI = () => {
         if (snapshot.size === 0) {
           console.log("No resultado");
         }
-        setItems(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+        setItems(snapshot.docs.map((doc) => ({p:{ id: doc.id, ...doc.data(), quantity:0 }})));
       });
     }
  console.log('tipo', tipo)
  return(
     <>
-    {items.map ( i => <ItemCard key={i.id} {...i}/> ) }
+    {items.map ( i => <ItemCard key={i.p.id} {...i.p}/> ) }
     </>
   )
 

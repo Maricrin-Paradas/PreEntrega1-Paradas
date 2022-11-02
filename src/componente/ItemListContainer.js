@@ -15,7 +15,7 @@ const getItems = () => {
   const db = getFirestore ()
   const collectionRef = collection( db, "Products ")
   getDocs(collectionRef).then (snapshot => {
-    const data = snapshot.docs.map( e=> ({id: e.id, ...e.data()}) )
+    const data = snapshot.docs.map( e=> ({p:{id: e.id, ...e.data()}, quantity:0}) )
     setItems(data);
     setLoading(false)
   })
@@ -25,7 +25,7 @@ const getItems = () => {
     <>
       { loading ?<figure> <img className="object-contain h-48 w-96"  src= {img} /> </figure>
       :
-      items.map( i => <ItemCard key={i.id} {...i}/> )
+      items.map( i => <ItemCard key={i.p.id} {...i.p}/> )
       }
     </>
   );
