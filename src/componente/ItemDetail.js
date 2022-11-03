@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { collection, doc, getDoc, getFirestore } from "firebase/firestore";
+import { collection, doc,  getDocs, getFirestore } from "firebase/firestore";
 import img from "../img/cargando.gif"
 import { useCart } from './Contex/ContexCar';
 
@@ -9,20 +9,19 @@ const ItemDetail = () => {
     const { id } = useParams()
     const [items, setItems] = useState({})
     const [loading, setLoading] = useState([true])
+    const { addToCart, } = useCart()
     const [conunt, setConunt] = useState(1)
-    const { addToCart } = useCart()
-
     useEffect(() => {
       getItemsDetail()
     }, [])
 
-   const getItemsDetail = () => {
-      const db = getFirestore()
+    const getItemsDetail = () => {
+      const db = getFirestore ()
       const collectionRef = collection( db, "Products ")
-      const docRef = doc( collectionRef, id)
-      getDoc(docRef).then(res  => {
-      setItems(res.data())
-      setLoading(false)
+      getDocs(collectionRef).then (snapshot => {
+        const data = snapshot.docs.map( e=> ({id: e.id, ...e.data()}) )
+        setItems(data.find((elem)=> elem.id === id));
+        setLoading(false)
       })
     }
 
@@ -31,7 +30,7 @@ const ItemDetail = () => {
     }
 
     const decrease = () => {
-      setConunt(conunt - 1)
+      setConunt( conunt - 1)
     }
 
     const increase = () => {

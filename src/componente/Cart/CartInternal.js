@@ -2,7 +2,11 @@ import { useCart } from "../Contex/ContexCar";
 import { Link } from 'react-router-dom';
 
 const CartInternal = () => {
-  const { products, clearCart } = useCart();
+  const { products, claerCart, conunt} = useCart();
+
+  const addHandler = () => { 
+    claerCart()
+  }
 
 
   console.log('products', products)
@@ -18,7 +22,8 @@ const CartInternal = () => {
             </figure>
             <div className="card-body">
               <h2 className="card-title"> {data.name} </h2>
-              <p>{data.price}</p>
+              <p>${data.price}</p>
+              <span className= "p-3 " >Cantidad {data.amount}</span>
               <div className="card-actions justify-end">
             <Link to='/cart/page'>   <button className="btn btn-secondary">Pagar</button> </Link>
               </div>
@@ -30,7 +35,7 @@ const CartInternal = () => {
           <p> No hay producto</p>
         }
         <div className="flex justify-end"> 
-        <button onClick={clearCart} className="btn btn-secondary m-5">Limpiar Carrito</button>
+        <button onClick={addHandler} className="btn btn-secondary m-5">Limpiar Carrito</button>
         </div>
 
     </>

@@ -4,6 +4,7 @@ const CartCreateContext = createContext({
     products: [],
     addToCart: () => {},
     claerCart: () => {},
+
 })
 
 const useCart = () => {
@@ -14,13 +15,21 @@ const CartCreateContextProvider = ( {children}) => {
 
     const [products, setProducts] = useState([])
 
-    const addToCart = (item, quantity) => {
-        if (inInCart(item.id)) {
-            setProducts(products.map(product => {
-                return product.id === item.id ? {...product, quantity: product.quantity + quantity} : products
-            }));
+
+    const addToCart = (product, conunt) => {
+        const inCart = products.find(
+            (productInCart) => productInCart.id === product.id
+        );
+        if (inCart) {
+            setProducts(
+                products.map((productInCart) => {
+                    if (productInCart.id === product.id) {
+                        return { ...inCart, amount: conunt > 1 ? inCart.amount + conunt : inCart.amount + 1};
+                    } else return productInCart;
+                })
+            );
         } else {
-            setProducts ([...products, {...item, quantity}])
+            setProducts ([...products, { ...product, amount: 1 }]);
         }
      }
 
@@ -28,12 +37,12 @@ const CartCreateContextProvider = ( {children}) => {
         setProducts([])
      }
 
-     const inInCart = (id) => products.some(product => product.id === id );
 
     const context = {
         products: products,
         addToCart: addToCart,
         claerCart: claerCart,
+
     }
 
   return (
