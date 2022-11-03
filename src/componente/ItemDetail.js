@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { collection, doc,  getDocs, getFirestore } from "firebase/firestore";
+import { collection,  getDocs, getFirestore } from "firebase/firestore";
 import img from "../img/cargando.gif"
 import { useCart } from './Contex/ContexCar';
 
