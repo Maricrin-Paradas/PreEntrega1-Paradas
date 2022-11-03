@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { collection, doc, getDoc, getFirestore } from "firebase/firestore";
 import img from "../img/cargando.gif"
-import { useCart } from './contex/ContexCar';
+import { useCart } from './Contex/ContexCar';
 
 const ItemDetail = () => {
 
@@ -21,13 +21,13 @@ const ItemDetail = () => {
       const collectionRef = collection( db, "Products ")
       const docRef = doc( collectionRef, id)
       getDoc(docRef).then(res  => {
-      setItems(res.data());
+      setItems(res.data())
       setLoading(false)
       })
     }
 
     const addHandler = () => { 
-      addToCart(items)
+      addToCart(items, conunt)
     }
 
     const decrease = () => {

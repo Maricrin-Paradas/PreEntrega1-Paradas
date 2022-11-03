@@ -1,5 +1,5 @@
 import React from 'react'
-import { useCart } from '../contex/ContexCar'
+import { useCart } from '../Contex/ContexCar'
 import {Link } from 'react-router-dom'
 
 const CartWidget = () => {

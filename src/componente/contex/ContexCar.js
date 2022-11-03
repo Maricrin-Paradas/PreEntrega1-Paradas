@@ -14,12 +14,21 @@ const CartCreateContextProvider = ( {children}) => {
 
     const [products, setProducts] = useState([])
 
-    const addToCart = (product) => {
-        setProducts( products => [...products, product] )
+    const addToCart = (item, quantity) => {
+        if (inInCart(item.id)) {
+            setProducts(products.map(product => {
+                return product.id === item.id ? {...product, quantity: product.quantity + quantity} : products
+            }));
+        } else {
+            setProducts ([...products, {...item, quantity}])
+        }
      }
+
     const claerCart = () => {
         setProducts([])
      }
+
+     const inInCart = (id) => products.some(product => product.id === id );
 
     const context = {
         products: products,

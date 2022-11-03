@@ -1,9 +1,11 @@
-import { useCart } from "../contex/ContexCar";
+import { useCart } from "../Contex/ContexCar";
 import { Link } from 'react-router-dom';
 
 const CartInternal = () => {
   const { products, clearCart } = useCart();
 
+
+  console.log('products', products)
   return (
     <>
     {
