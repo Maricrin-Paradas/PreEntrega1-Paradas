@@ -19,29 +19,16 @@ const CartCreateContextProvider = ( {children}) => {
 
     const [products, setProducts] = useLocalStorage('products', [])
 
-    /*const addToCart = (items, quantity) => {
+    const addToCart = (items, quantity) => {
 
         if (isInCart(items.p.id)){
             setProducts(products.map(product => {
-                return product.p.id === items.p.id ? {p:{...products.p}, quantity: product.quantity + quantity } : products
+                return product.p.id === items.p.id ? [{p:{...products.p}, quantity: product.quantity + quantity }] : products
             }));
         } else {
             setProducts([...products , {p:{...items.p}, quantity:1}]);
         }
 
-     }*/
-
-     const addToCart = (items, quantity) => {
-        let newCart;
-        let product = products.p.find(product => product.p.id === items.p.id);
-        if (product) {
-            product.quantity += quantity;
-            newCart = [...products]
-        } else {
-            product = { p: items, quantity: quantity};
-            newCart = [...products, product]
-        }
-        setProducts(newCart)
      }
 
     const totalPrice = () => {
