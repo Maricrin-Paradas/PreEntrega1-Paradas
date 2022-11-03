@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { collection,  getDocs, getFirestore } from "firebase/firestore";
+import { collection, doc,  getDocs, getFirestore } from "firebase/firestore";
 import img from "../img/cargando.gif"
 import { useCart } from './Contex/ContexCar';
 
@@ -43,17 +43,17 @@ const ItemDetail = () => {
           :
            <div ClassName="flex justify-center "> 
     <div className=" card lg:card-side bg-base-200 shadow-xl m-20">
-        <figure><img className="h-55 w-96" src={items.p.img}/></figure>
+        <figure><img className="h-55 w-96" src={items.img}/></figure>
         <div className="card-body m-10">
-            <h2 className="card-title">{items.p.name}</h2>
-            <p>{items.p.description}</p>
+            <h2 className="card-title">{items.name}</h2>
+            <p>{items.description}</p>
             <div className="card-actions justify-end">
-              <div className="  p-3 m-5 ">Precio ${items.p.price}</div>
+              <div className="  p-3 m-5 ">Precio ${items.price}</div>
 
               <div className="btn-group m-5"> 
               <button disabled={ conunt <= 1 } onClick={decrease} className="btn btn-secondary">-</button>
               <span className= "p-3 " >{conunt}</span>
-              <button className=" w-5 btn btn-secondary" disabled={ conunt >= items.p.stock}  onClick={increase} >+</button>
+              <button className=" w-5 btn btn-secondary" disabled={ conunt >= items.stock}  onClick={increase} >+</button>
               </div>
                <button onClick={addHandler} className="btn btn-secondary m-5">Agregar a Carrito</button>
             </div>
